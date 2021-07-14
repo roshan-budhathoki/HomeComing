@@ -1,4 +1,3 @@
-import {server} from '../../../config'
 import Link from 'next/link'
 import Meta from '../../../components/Meta'
 import articleStyles from '../../../styles/Article.module.css';
@@ -10,8 +9,8 @@ const article = ({article}) => {
             <Meta title={article.title} description={article.excerpt}/>
             <div className = {articleStyles.grid}>
                 <div className = {articleStyles.card}>
-                    <h1>{article.title}</h1>
-                    <p>{article.body}</p>
+                    <h1>{article.name}</h1>
+                    <p>{article.email}</p>
                     <br />
                 </div> 
             </div>
@@ -21,7 +20,7 @@ const article = ({article}) => {
 }
 
 export const getStaticProps = async (context) =>{
-    const res = await fetch(`${server}/api/articles/${context.params.id}`)
+    const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
     const article = await res.json();
     return {
         props: {
@@ -31,7 +30,7 @@ export const getStaticProps = async (context) =>{
 }
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`${server}/api/articles`)
+    const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
     const articles = await res.json();
 
     const ids = articles.map((article) => article.id)
