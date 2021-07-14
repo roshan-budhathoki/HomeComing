@@ -6,7 +6,7 @@ import articleStyles from '../../../styles/Article.module.css';
 const article = ({article}) => {
     return(
         <>
-            <Meta title={article.title} description={article.excerpt}/>
+            <Meta title={article.name} description={article.email}/>
             <div className = {articleStyles.grid}>
                 <div className = {articleStyles.card}>
                     <h1>{article.name}</h1>
